@@ -15,15 +15,17 @@
             android:id="@+id/input"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent" android:textAlignment="center"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/temperature"/>
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/temperature"
+            android:textColorLink="@android:color/background_dark"/>
     <Button
             android:text="Weather"
             android:layout_width="344dp"
             android:layout_height="wrap_content"
             android:id="@+id/getTemp" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/temperature" app:layout_constraintBottom_toBottomOf="parent"
-            android:onClick="getWeather"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temperature"
+            android:onClick="getWeather"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
     <TextView
             android:text="TEMPERATURE"
             android:layout_width="344dp"
