@@ -1,37 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent" android:id="@+id/linearLayout"
-                                             tools:layout_editor_absoluteY="25dp">
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="ZIP"
-            android:ems="10"
-            android:id="@+id/input"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toEndOf="parent" android:textAlignment="center"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/temperature"
-            android:textColorLink="@android:color/background_dark"/>
-    <Button
-            android:text="Weather"
-            android:layout_width="344dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/getTemp" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/temperature"
-            android:onClick="getWeather"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
-    <TextView
-            android:text="TEMPERATURE"
-            android:layout_width="344dp"
-            android:layout_height="50dp" android:id="@+id/temperature"
-            app:layout_constraintTop_toBottomOf="@+id/input"
-            app:layout_constraintBottom_toTopOf="@+id/getTemp" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            android:textAlignment="center" android:textSize="36sp"/>
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:paddingTop="20dp" android:paddingLeft="30dp"
+            android:orientation="vertical" android:paddingRight="30dp">
+
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="101dp">
+            <TextView
+                    android:text="TEMP"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content" android:id="@+id/temperature"
+                    android:textSize="50sp" android:layout_weight="1"/>
+            <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/imgConditions" android:baselineAlignBottom="false" android:layout_weight="1"/>
+        </LinearLayout>
+        <TextView
+                android:text="City/State"
+                android:layout_width="213dp"
+                android:layout_height="35dp" android:id="@+id/city_state" android:textSize="24sp"/>
+        <TextView
+                android:text="Conditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/condition"/>
+        <Switch
+                android:text="F/C  "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/unit" android:paddingTop="100dp"
+                android:textSize="30sp"
+                android:switchTextAppearance="@style/TextAppearance.AppCompat.Button" android:paddingLeft="80dp"
+                android:onClick="changeUnit" android:textColorLink="@android:color/background_dark"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/input" android:paddingTop="200dp" android:textAlignment="center"
+                android:textColorLink="@android:color/transparent"/>
+        <Button
+                android:text="Weather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/button" android:onClick="getWeather"/>
+    </LinearLayout>
+</ScrollView>
