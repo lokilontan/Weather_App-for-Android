@@ -1,11 +1,13 @@
 package plug_off.androweather;
 
+import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,20 +17,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void getWeather(View v)
-    {
-        // Disable threading. We'll fix this later.
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+    public void getWeather(View v) {
 
         // Get the text from the input field
         EditText location = (EditText) findViewById(R.id.input);
-        Weather w = new Weather(location.getText().toString());
-
-        w.fetch();
-
-        // Set the text of the temperature field
-        TextView temp = (TextView) findViewById(R.id.temperature);
-        temp.setText("" + w.getTemperatureF(w.DynamicJson) + " / " + w.getTemperatureC(w.DynamicJson) );
+        new GetWeatherInBackground().execute(location.getText().toString());
     }
+
+    private class GetWeatherInBackground extends AsyncTask<String, Void, Weather> {
+        @Override
+        protected Weather doInBackground(String... zip){
+            Weather W = new Weather(zip[0]);
+            W.fetch();
+            return W;
+        }
+
+        @Override
+        protected void onPostExecute(Weather weather){
+            TextView temp = (TextView) findViewById(R.id.temperature);
+            temp.setText("" + weather.getTemperatureF(weather.DynamicJson) + " / " + weather.getTemperatureC(weather.DynamicJson) );
+        }
+    }
+
 }
+
+
