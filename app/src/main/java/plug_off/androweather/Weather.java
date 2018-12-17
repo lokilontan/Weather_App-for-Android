@@ -141,7 +141,7 @@ public class Weather {
 
 
     public void fetch() {
-        String wdRequest = "http://api.wunderground.com/api/1655f919bbcd29ed/conditions/forecast7day/q/" + zip + ".json";
+        String wdRequest = "http://api.wunderground.com/api/" + BuildConfig.ApiKey + "/conditions/forecast7day/q/" + zip + ".json";
 
         try {
             URL wdURL = new URL(wdRequest);
